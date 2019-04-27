@@ -1,5 +1,11 @@
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+
+// import java.io.File;
+// import java.io.FileNotFoundException;
+// import java.io.PrintWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 /**
  * 
@@ -37,17 +43,15 @@ public class Finder {
 	}
 
 	public String toString() {
-		return "Latitude: " + latitude + "\nLongitude: " + longitude +
-			"\nDevice Identification #: " + ID;
+		return "Latitude: " + latitude + "\nLongitude: " + longitude + "\nDevice Identification #: " + ID;
 	}
 
 	public void sendLocationToServer() {
-		PrintWriter server;
 		try {
-			server = new PrintWriter("server.dat");
-			server.println(this.getCoordinates());
-			server.close();
-		} catch (FileNotFoundException e) {
+			Files.write(Paths.get("./server.dat"), 
+			this.getCoordinates().getBytes(),
+			StandardOpenOption.APPEND);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
