@@ -1,11 +1,10 @@
-
-// import java.io.File;
-// import java.io.FileNotFoundException;
-// import java.io.PrintWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 
 /**
  * 
@@ -48,11 +47,13 @@ public class Finder {
 
 	public void sendLocationToServer() {
 		try {
-			Files.write(Paths.get("./server.dat"), 
-			this.getCoordinates().getBytes(),
-			StandardOpenOption.APPEND);
-		} catch (IOException e) {
-			e.printStackTrace();
+			final Path pathToServer = Paths.get("./server.dat");
+			Files.write(pathToServer, Arrays.asList(this.getCoordinates()),
+			StandardCharsets.UTF_8, 
+			Files.exists(pathToServer) ? StandardOpenOption.APPEND 
+			: StandardOpenOption.CREATE);
+		} catch (final IOException ioe) {
+			ioe.printStackTrace();
 		}
 	}
 
