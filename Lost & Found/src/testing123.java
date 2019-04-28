@@ -1,13 +1,13 @@
-// using as test driver class to drive other classes
-
 public class testing123 {
 	public static void main(String[] args) {
-		testFinderClass();
+		// testFinderClass();
+		testFinderGeneratedCoords();
 	}
-
 
 	/**
 	 * Temp method for testing Finder class
+	 * 
+	 * Feel free to delete
 	 */
 	public static void testFinderClass() {
 		final int ID_FINDER1 = 1;
@@ -17,5 +17,18 @@ public class testing123 {
 		System.out.println(finder1 + "\n\n" + finder2);
 		finder1.sendLocationToServer();
 		finder2.sendLocationToServer();
+	}
+
+	/**
+	 * Temp method for testing Finder constructor which 
+	 * generates coordinates
+	 * 
+	 * Feel free to delete
+	 */
+	public static void testFinderGeneratedCoords() {
+		final int ID_FINDER1 = 1;
+		Finder finder1 = new Finder(ID_FINDER1);
+		System.out.println(finder1);
+		finder1.sendLocationToServer();
 	}
 }
