@@ -39,27 +39,45 @@ public class Finder {
 		this.longitude = longitude;
 	}
 
+	/**
+	 * 
+	 * @return string representation of latitude and longitude
+	 */
 	public String getCoordinates() {
 		return "(" + latitude + ", " + longitude + ")";
 	}
 
+	/**
+	 * private helper method
+	 * @return current time and date aka Timestamp
+	 */
 	private Timestamp timeStamp() {
 		Date date = new Date();
 		Timestamp timestamp = new Timestamp(date.getTime());
 		return timestamp;
 	}
 
+	/**
+	 * provide toString method so instances can be printed out to console
+	 * @return string literal
+	 */
 	public String toString() {
-		return "Latitude: " + latitude + "\nLongitude: " + longitude + "\nDevice Identification #: " + ID;
+		return "Device ID: " + ID + "\nLatitude: " + latitude + 
+			"\nLongitude: " + longitude;
 	}
 
+	/**
+	 * sends latitude and lonitude coordinates to server, along with date
+	 * and timestamp
+	 * @return void
+	 */
 	public void sendLocationToServer() {
 		try {
 			// create Path object to file acting as server
 			final Path pathToServer = Paths.get("./server.dat");
 			// Create Files object for writing to file (aka server) <singleton?>
-			Files.write(pathToServer, Arrays.asList(this.getCoordinates() +
-			this.timeStamp()), StandardCharsets.UTF_8, 
+			Files.write(pathToServer, Arrays.asList(this.getCoordinates() + " "
+			+ timeStamp()), StandardCharsets.UTF_8, 
 			// If file existsts append to existing data
 			Files.exists(pathToServer) ? StandardOpenOption.APPEND 
 			// Else create file to be written to
@@ -68,5 +86,4 @@ public class Finder {
 			ioe.printStackTrace();
 		}
 	}
-
 }
