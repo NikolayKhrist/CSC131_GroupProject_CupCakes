@@ -78,9 +78,10 @@ public class Finder {
 			// Create Files object for writing to file (aka server) <singleton?>
 			Files.write(pathToServer, Arrays.asList(this.getCoordinates() + " "
 			+ timeStamp()), StandardCharsets.UTF_8, 
-			// If file existsts append to existing data
+			// If file exists append coordinates and timestamp
 			Files.exists(pathToServer) ? StandardOpenOption.APPEND 
-			// Else create file to be written to
+			// Else create file to be written to and write corridinates 
+			// and timestamp
 			: StandardOpenOption.CREATE);
 		} catch (final IOException ioe) {
 			ioe.printStackTrace();
