@@ -10,6 +10,12 @@ import java.util.Arrays;
 import java.util.Date;
 
 /**
+ * TODO: 
+ * Create static ID for each instance
+ * so each Finder is gauranteed a unique ID
+ */
+
+/**
  * 
  * @author Phil Fernandez
  *
