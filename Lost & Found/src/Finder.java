@@ -4,7 +4,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.Timestamp;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * 
@@ -41,16 +43,26 @@ public class Finder {
 		return "(" + latitude + ", " + longitude + ")";
 	}
 
+	private Timestamp timeStamp() {
+		Date date = new Date();
+		Timestamp timestamp = new Timestamp(date.getTime());
+		return timestamp;
+	}
+
 	public String toString() {
 		return "Latitude: " + latitude + "\nLongitude: " + longitude + "\nDevice Identification #: " + ID;
 	}
 
 	public void sendLocationToServer() {
 		try {
+			// create Path object to file acting as server
 			final Path pathToServer = Paths.get("./server.dat");
-			Files.write(pathToServer, Arrays.asList(this.getCoordinates()),
-			StandardCharsets.UTF_8, 
+			// Create Files object for writing to file (aka server) <singleton?>
+			Files.write(pathToServer, Arrays.asList(this.getCoordinates() +
+			this.timeStamp()), StandardCharsets.UTF_8, 
+			// If file existsts append to existing data
 			Files.exists(pathToServer) ? StandardOpenOption.APPEND 
+			// Else create file to be written to
 			: StandardOpenOption.CREATE);
 		} catch (final IOException ioe) {
 			ioe.printStackTrace();
