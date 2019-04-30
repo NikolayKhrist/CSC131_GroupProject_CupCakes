@@ -1,6 +1,6 @@
 import java.util.Scanner;
 //This class is first modified by Nhan Huynh on 04/28/2019, next meeting will firgure out how to connect to others classes. 
-
+//eclipse is stupid
 //this class allows to register with ID and password for the product then send it to the server and report when the product is lost.
 public class Owner {
 	//this function let user enter the product's information, the function will take productID and password as input variables
