@@ -28,6 +28,10 @@ public class Device {
 		this.friendlyName = friendlName;
 	}
 
+	public int getID() {
+		return this.ID;
+	}
+
 	public String toString() {
 		String toPrint = "Device: ";
 		if (friendlyName != null) {
