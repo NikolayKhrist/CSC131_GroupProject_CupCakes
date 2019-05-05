@@ -15,7 +15,7 @@ public class Device {
 	private int ID;
 	private String friendlyName;
 
-    public Device() {
+    public Device(String friendlyName) {
 		DeviceDatabase.getInstance();
 
 		try {
@@ -34,16 +34,12 @@ public class Device {
 		// Create ID that is last recored ID + 1
 		this.ID = ++idCounter;
         this.tag = new Finder(ID);
-	}
-
-	public Device(String friendlyName) {
-		this();
 		this.friendlyName = friendlyName;
 	}
 
-	public void setFriendlyString(String friendlName) {
-		this.friendlyName = friendlName;
-	}
+	// public Device(String friendlyName) {
+	// 	this();
+	// }
 
 	public int getID() {
 		return this.ID;
@@ -72,6 +68,7 @@ public class Device {
 		} catch (final IOException ioe) {
 			ioe.printStackTrace();
 		}
+		this.tag.sendLocationToServer();
 		System.out.println(DeviceDatabase.readDatabase());
 	}
 

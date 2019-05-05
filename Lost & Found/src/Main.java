@@ -42,7 +42,7 @@ public class Main {
         newRegisteredDevice = new Device(deviceName);
         System.out.println(deviceName + " successfully registered with ID #" + newRegisteredDevice.getID() + "\n");
         newRegisteredDevice.registerDevice();
-        delay(3);
+        delay(8);
         return newRegisteredDevice;
     }
 
