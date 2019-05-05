@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 
 public class Device {
+
 	private static int idCounter = 0;
     private Finder tag;
 	private int ID;
