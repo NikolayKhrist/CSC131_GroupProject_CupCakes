@@ -1,7 +1,8 @@
 public class testing123 {
 	public static void main(String[] args) {
 		// testFinderClass();
-		testFinderGeneratedCoords();
+		// testFinderGeneratedCoords();
+		testDeviceClass();
 	}
 
 	/**
@@ -30,5 +31,16 @@ public class testing123 {
 		Finder finder1 = new Finder(ID_FINDER1);
 		System.out.println(finder1);
 		finder1.sendLocationToServer();
+	}
+
+	public static void testDeviceClass() {
+		Device roomba = new Device("Roomba");
+		System.out.println(roomba);
+
+		Device iPhone = new Device("iPhone");
+		System.out.println(iPhone);
+
+		Device pixel3XL = new Device();
+		System.out.println(pixel3XL);
 	}
 }
