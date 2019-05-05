@@ -7,7 +7,7 @@ public class Main {
         welcomeScreen();
         int menuChoice = displayMenu(scan);
 
-        while (menuChoice != 0) {
+        while (menuChoice != 3) {
             if (menuChoice == 1) {
                 Device newDevice = registerDevice(scan);
                 System.out.println(newDevice);
@@ -22,7 +22,8 @@ public class Main {
         System.out.println("\n\nPlease Choose From the Following Options: \n\n");
         System.out.println("1. Register a new device.\n");
         System.out.println("2. Find current location of registered device\n");
-        System.out.print("Please Enter 1 or 2: ");
+        System.out.println("3. Exit program\n");
+        System.out.print("Please Enter 1, 2 or 3: ");
         int choice = Integer.parseInt(scan.nextLine());
         return choice;
     }
@@ -36,6 +37,7 @@ public class Main {
         deviceName = scan.nextLine();
         newRegisteredDevice = new Device(deviceName);
         System.out.println(deviceName + " successfully registered with ID #" + newRegisteredDevice.getID() + "\n");
+        delay(3);
         return newRegisteredDevice;
     }
 
