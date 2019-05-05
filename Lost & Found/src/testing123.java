@@ -2,7 +2,7 @@ public class testing123 {
 	public static void main(String[] args) {
 		// testFinderClass();
 		// testFinderGeneratedCoords();
-		testDeviceClass();
+		// testDeviceClass();
 	}
 
 	/**

@@ -24,6 +24,10 @@ public class Device {
 		this.friendlyName = friendlyName;
 	}
 
+	public void setFriendlyString(String friendlName) {
+		this.friendlyName = friendlName;
+	}
+
 	public String toString() {
 		String toPrint = "Device: ";
 		if (friendlyName != null) {
