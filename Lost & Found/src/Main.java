@@ -17,7 +17,7 @@ public class Main {
         System.out.println("1. Register a new device.\n");
         System.out.println("2. Find current location of registered device\n");
         System.out.print("Please Enter 1 or 2: ");
-        int choice = scan.nextInt();
+        int choice = Integer.parseInt(scan.nextLine());
         return choice;
     }
 
@@ -26,7 +26,7 @@ public class Main {
         String deviceName;
         System.out.print("Enter a name for your device. eg Roomba, iPhone, etc: ");
 
-        deviceName = scan.next();
+        deviceName = scan.nextLine();
         newRegisteredDevice = new Device(deviceName);
         return newRegisteredDevice;
     }
