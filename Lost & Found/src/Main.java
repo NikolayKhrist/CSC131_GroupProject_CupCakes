@@ -8,13 +8,10 @@ public class Main {
         int menuChoice;
         welcomeScreen();
         menuChoice = displayMenu(scan);
-        ArrayList<Device> deviceCollection = new ArrayList<Device>();
 
         while (menuChoice != 3) {
             if (menuChoice == 1) {
                 Device newDevice = registerDevice(scan);
-                deviceCollection.add(newDevice);
-                System.out.println(deviceCollection);
                 delay(1);
                 menuChoice = displayMenu(scan);
             } 

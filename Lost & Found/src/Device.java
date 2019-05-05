@@ -19,6 +19,9 @@ public class Device {
 		DeviceDatabase.getInstance();
 
 		try {
+			// If device database is not empty get the ID of the last
+			// device added so that we can increment by 1 for the next ID. 
+			// If the database is empty we start at ID=1
 			idCounter = Character.getNumericValue(
 				DeviceDatabase.readDatabase()
 				.get(DeviceDatabase.readDatabase().size()-1).charAt(0)
@@ -28,7 +31,7 @@ public class Device {
 			// e.printStackTrace();
 			System.out.println("ArrayList was empty");
 		}
-
+		// Create ID that is last recored ID + 1
 		this.ID = ++idCounter;
         this.tag = new Finder(ID);
 	}
