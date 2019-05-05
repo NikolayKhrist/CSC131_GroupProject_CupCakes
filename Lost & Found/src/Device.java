@@ -65,7 +65,7 @@ public class Device {
 	public void registerDevice() {
 		try {
 			final Path deviceDB = Paths.get("./deviceDatabase.dat");
-			Files.write(deviceDB, Arrays.asList(this.toString()), 
+			Files.write(deviceDB, Arrays.asList(this.ID + " : " + this.friendlyName), 
 				StandardCharsets.UTF_8, 
 				Files.exists(deviceDB) ? StandardOpenOption.APPEND 
 				: StandardOpenOption.CREATE);
