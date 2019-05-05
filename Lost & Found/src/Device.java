@@ -9,12 +9,26 @@ import java.util.Arrays;
 
 public class Device {
 
+	// private static DeviceDatabase db = DeviceDatabase.getInstance();
 	private static int idCounter = 0;
     private Finder tag;
 	private int ID;
 	private String friendlyName;
 
     public Device() {
+		DeviceDatabase.getInstance();
+
+		try {
+			idCounter = Character.getNumericValue(
+				DeviceDatabase.readDatabase()
+				.get(DeviceDatabase.readDatabase().size()-1).charAt(0)
+			);
+			System.out.println("ID COUNTER: " + idCounter);
+		} catch (ArrayIndexOutOfBoundsException e){
+			// e.printStackTrace();
+			System.out.println("ArrayList was empty");
+		}
+
 		this.ID = ++idCounter;
         this.tag = new Finder(ID);
 	}
@@ -45,24 +59,6 @@ public class Device {
 		return toPrint;
 	}
 	
-
-    // private void registerDevice2() {
-	// 	try {
-	// 		// create Path object to file acting as server
-	// 		final Path pathToServer = Paths.get("./server.dat");
-	// 		// Create Files object for writing to file (aka server) <singleton?>
-	// 		Files.write(pathToServer, Arrays.asList(this.getCoordinates() + " "
-	// 		+ timeStamp()), StandardCharsets.UTF_8, 
-	// 		// If file exists append coordinates and timestamp
-	// 		Files.exists(pathToServer) ? StandardOpenOption.APPEND 
-	// 		// Else create file to be written to and write corridinates 
-	// 		// and timestamp
-	// 		: StandardOpenOption.CREATE);
-	// 	} catch (final IOException ioe) {
-	// 		ioe.printStackTrace();
-	// 	}
-	// }
-
 	public void registerDevice() {
 		try {
 			final Path deviceDB = Paths.get("./deviceDatabase.dat");
@@ -73,7 +69,9 @@ public class Device {
 		} catch (final IOException ioe) {
 			ioe.printStackTrace();
 		}
+		System.out.println(DeviceDatabase.readDatabase());
 	}
+
 	
 
 }

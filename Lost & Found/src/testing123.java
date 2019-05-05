@@ -35,12 +35,12 @@ public class testing123 {
 
 	public static void testDeviceClass() {
 		Device roomba = new Device("Roomba");
-		System.out.println(roomba);
+		roomba.registerDevice();
+		// System.out.println(roomba);
 
-		Device iPhone = new Device("iPhone");
-		System.out.println(iPhone);
 
-		Device pixel3XL = new Device();
-		System.out.println(pixel3XL);
+
+
+		// System.out.println(pixel3XL);
 	}
 }

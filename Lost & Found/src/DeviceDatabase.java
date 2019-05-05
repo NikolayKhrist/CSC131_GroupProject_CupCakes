@@ -1,27 +1,38 @@
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
-class DeviceDataBase {
-    private static DeviceDataBase instance;
+class DeviceDatabase {
+    private static DeviceDatabase instance;
     private static File file = new File("./deviceDatabase.dat");
+    private static ArrayList<String> loadDatabaseIntoMemory;
 
-    private DeviceDataBase() {
+    private DeviceDatabase() {
         // private constructor
     }
 
-    public synchronized static DeviceDataBase getInstance() {
+    public synchronized static DeviceDatabase getInstance() {
         if(instance == null) {
+            loadDatabaseIntoMemory = new ArrayList<String>();
 
             try {
                 Scanner input = new Scanner(file);
                 while (input.hasNextLine()) {
-                    System.out.println(input.nextLine());
+                    loadDatabaseIntoMemory.add(input.nextLine());
                 }
             } catch (Exception e) {
                 
             }
 
-            instance = new DeviceDataBase();
+            instance = new DeviceDatabase();
+            System.out.println("DeviceDatabase created....");
+        }
+        else {
+            System.out.println("Return existing DeviceDatabase....");
         }
         return instance;
+    }
+
+    public static ArrayList<String> readDatabase() {
+        return loadDatabaseIntoMemory;
     }
 }
