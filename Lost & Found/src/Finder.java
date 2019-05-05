@@ -96,7 +96,7 @@ public class Finder {
 			// create Path object to file acting as server
 			final Path pathToServer = Paths.get("./server.dat");
 			// Create Files object for writing to file (aka server) <singleton?>
-			Files.write(pathToServer, Arrays.asList(this.getCoordinates() + " "
+			Files.write(pathToServer, Arrays.asList(this.ID + " : " + this.getCoordinates() + " "
 			+ timeStamp()), StandardCharsets.UTF_8, 
 			// If file exists append coordinates and timestamp
 			Files.exists(pathToServer) ? StandardOpenOption.APPEND 
