@@ -1,20 +1,27 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        int menuChoice;
         welcomeScreen();
-        int menuChoice = displayMenu(scan);
+        menuChoice = displayMenu(scan);
+        ArrayList<Device> deviceCollection = new ArrayList<Device>();
 
         while (menuChoice != 3) {
             if (menuChoice == 1) {
                 Device newDevice = registerDevice(scan);
-                System.out.println(newDevice);
+                deviceCollection.add(newDevice);
+                System.out.println(deviceCollection);
+                delay(1);
                 menuChoice = displayMenu(scan);
+            } 
+            else if (menuChoice == 2) {
+
             }
         }
-
     }
 
     public static int displayMenu(Scanner scan) {
@@ -37,6 +44,7 @@ public class Main {
         deviceName = scan.nextLine();
         newRegisteredDevice = new Device(deviceName);
         System.out.println(deviceName + " successfully registered with ID #" + newRegisteredDevice.getID() + "\n");
+        newRegisteredDevice.registerDevice();
         delay(3);
         return newRegisteredDevice;
     }
@@ -44,14 +52,21 @@ public class Main {
     public static void welcomeScreen() {
         clearScreen();
         System.out.println("Welcome to the CSC 131 CupCakes Device Finder!");
-        delay(3);
+        delay(1);
     }
 
+    /**
+     * clears console screen for UI transistion
+     */
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    /**
+     * adds delay to UI ouput for <seconds> seconds
+     * @param seconds
+     */
     public static void delay(int seconds) {
         try {
             TimeUnit.SECONDS.sleep(seconds);

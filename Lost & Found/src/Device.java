@@ -1,4 +1,3 @@
-/*
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -6,7 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
-*/
+
 
 public class Device {
 	private static int idCounter = 0;
@@ -32,6 +31,7 @@ public class Device {
 		return this.ID;
 	}
 
+
 	public String toString() {
 		String toPrint = "Device: ";
 		if (friendlyName != null) {
@@ -45,7 +45,7 @@ public class Device {
 	}
 	
 
-    // private void recordDeviceID() {
+    // private void registerDevice2() {
 	// 	try {
 	// 		// create Path object to file acting as server
 	// 		final Path pathToServer = Paths.get("./server.dat");
@@ -60,5 +60,19 @@ public class Device {
 	// 	} catch (final IOException ioe) {
 	// 		ioe.printStackTrace();
 	// 	}
-    // }
+	// }
+
+	public void registerDevice() {
+		try {
+			final Path deviceDB = Paths.get("./deviceDatabase.dat");
+			Files.write(deviceDB, Arrays.asList(this.toString()), 
+				StandardCharsets.UTF_8, 
+				Files.exists(deviceDB) ? StandardOpenOption.APPEND 
+				: StandardOpenOption.CREATE);
+		} catch (final IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+	
+
 }
