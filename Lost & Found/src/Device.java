@@ -22,9 +22,10 @@ public class Device {
 			// If device database is not empty get the ID of the last
 			// device added so that we can increment by 1 for the next ID. 
 			// If the database is empty we start at ID=1
-			idCounter = Character.getNumericValue(
+			idCounter = Integer.parseInt(
 				DeviceDatabase.readDatabase()
-				.get(DeviceDatabase.readDatabase().size()-1).charAt(0)
+				.get(DeviceDatabase.readDatabase().size()-1).substring(0,2)
+				.replaceAll("\\s+", "")
 			);
 			System.out.println("ID COUNTER: " + idCounter);
 		} catch (ArrayIndexOutOfBoundsException e){
