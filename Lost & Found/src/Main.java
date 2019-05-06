@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -109,8 +110,22 @@ public class Main {
      * clears console screen for UI transistion
      */
     public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        String operatingSystem = System.getProperty("os.name");
+
+        // If OS is Windows use this method to clear console
+        if (operatingSystem.contains("Windows")) {
+            try {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // If OS is *nix use this method to clear console
+        } else {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        }
     }
 
     public static void promptForward(Scanner scan) {
