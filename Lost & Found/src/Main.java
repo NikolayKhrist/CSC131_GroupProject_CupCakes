@@ -20,7 +20,7 @@ public class Main {
                     menuChoice = displayMenu(scan);
                     break;
                 case 3:
-                    deviceDump();
+                    deviceDump(scan);
                     menuChoice = displayMenu(scan);
                     break;
                 default:
@@ -44,7 +44,6 @@ public class Main {
             choice = Integer.parseInt(scan.nextLine());
             
         } catch (Exception e) {
-            System.out.println("Invalid Input");
             displayMenu(scan);
         }
 
@@ -74,6 +73,10 @@ public class Main {
             System.out.print("Enter your device id: ");
             int ID = Integer.parseInt(scan.nextLine());
             String location = Finder.findDevice(ID);
+            System.out.println("\n\nID     (LATITUDE, LONGITUDE)  " + 
+                "    DATE      TIME         DEVICE NAME ");
+            System.out.println("-----------------------" + 
+                "---------------------------------------------");
             System.out.println(location);
 
         } catch (IndexOutOfBoundsException e) {
@@ -82,17 +85,18 @@ public class Main {
             System.out.println("Invalid input...");
         }
         
-        System.out.print("\n\nPress the ENTER key to continue... ");
-        scan.nextLine();
+        promptForward(scan);
     }
 
-    public static void deviceDump() {
+    public static void deviceDump(Scanner scan) {
         Server.getInstance();
         clearScreen();
+        System.out.println("\nID  DEVICE NAME");
+        System.out.println("------------------");
         for(String device : Server.readDatabase()) {
             System.out.println(device);
         }
-        delay(5);
+        promptForward(scan);
     }
 
     public static void welcomeScreen() {
@@ -109,6 +113,10 @@ public class Main {
         System.out.flush();
     }
 
+    public static void promptForward(Scanner scan) {
+        System.out.print("\n\nPress the ENTER key to continue... ");
+        scan.nextLine();
+    }
 
     /**
      * adds delay to UI ouput for <seconds> seconds
