@@ -11,7 +11,7 @@ public class Main {
 
         while (menuChoice != 4) {
             if (menuChoice == 1) {
-                Device newDevice = registerDevice(scan);
+                registerDevice(scan);
                 delay(1);
                 menuChoice = displayMenu(scan);
             } 

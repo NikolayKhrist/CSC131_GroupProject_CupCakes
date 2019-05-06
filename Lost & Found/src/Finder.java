@@ -123,6 +123,7 @@ public class Finder {
 		// System.out.println(serverInMemory);
 		String deviceAndLocation = serverInMemory.get(ID-1) +
 			Server.readDatabase().get(ID-1);
+		input.close();
 		return deviceAndLocation;
 	}
 
