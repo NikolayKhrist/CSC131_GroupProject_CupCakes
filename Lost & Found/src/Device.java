@@ -9,7 +9,6 @@ import java.util.Arrays;
 
 public class Device {
 
-	// private static Server db = Server.getInstance();
 	private static int idCounter = 0;
     private Finder tag;
 	private int ID;
@@ -37,18 +36,9 @@ public class Device {
 		this.friendlyName = friendlyName;
 	}
 
-	// public Device(String friendlyName) {
-	// 	this();
-	// }
-
 	public int getID() {
 		return this.ID;
 	}
-
-	// public String lastRecordedLocation(int ID) throws FileNotFoundException {
-	// 	return this.tag.findDevice(ID);
-	// }
-
 
 	public String toString() {
 		String toPrint = "Device: ";
@@ -75,7 +65,4 @@ public class Device {
 		this.tag.sendLocationToServer();
 
 	}
-
-	
-
 }
