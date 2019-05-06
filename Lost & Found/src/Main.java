@@ -55,19 +55,28 @@ public class Main {
 
     public static void showLocation(Scanner scan) 
         throws FileNotFoundException {
-        DeviceDatabase.getInstance();
+        Server.getInstance();
         clearScreen();
-        System.out.print("Enter your device id: ");
-        int ID = Integer.parseInt(scan.nextLine());
-        String location = Finder.findDevice(ID);
-        System.out.println(location);
+
+        try {
+            System.out.print("Enter your device id: ");
+            int ID = Integer.parseInt(scan.nextLine());
+            String location = Finder.findDevice(ID);
+            System.out.println(location);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Ivalid ID...");
+        } catch (Exception e) {
+            System.out.println("Invalid input...");
+        }
+        
         delay(5);
     }
 
     public static void deviceDump() {
-        DeviceDatabase.getInstance();
+        Server.getInstance();
         clearScreen();
-        for(String device : DeviceDatabase.readDatabase()) {
+        for(String device : Server.readDatabase()) {
             System.out.println(device);
         }
         delay(5);

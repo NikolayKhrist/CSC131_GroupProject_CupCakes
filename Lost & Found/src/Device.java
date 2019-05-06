@@ -10,22 +10,22 @@ import java.util.Arrays;
 
 public class Device {
 
-	// private static DeviceDatabase db = DeviceDatabase.getInstance();
+	// private static Server db = Server.getInstance();
 	private static int idCounter = 0;
     private Finder tag;
 	private int ID;
 	private String friendlyName;
 
     public Device(String friendlyName) {
-		DeviceDatabase.getInstance();
+		Server.getInstance();
 
 		try {
 			// If device database is not empty get the ID of the last
 			// device added so that we can increment by 1 for the next ID. 
 			// If the database is empty we start at ID=1
 			idCounter = Integer.parseInt(
-				DeviceDatabase.readDatabase()
-				.get(DeviceDatabase.readDatabase().size()-1).substring(0,2)
+				Server.readDatabase()
+				.get(Server.readDatabase().size()-1).substring(0,2)
 				.replaceAll("\\s+", "")
 			);
 			System.out.println("ID COUNTER: " + idCounter);

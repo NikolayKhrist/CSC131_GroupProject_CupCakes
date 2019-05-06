@@ -119,10 +119,10 @@ public class Finder {
 		while (input.hasNextLine()) {
 			serverInMemory.add(input.nextLine());
 		}
-		// System.out.println(DeviceDatabase.readDatabase());
+		// System.out.println(Server.readDatabase());
 		// System.out.println(serverInMemory);
 		String deviceAndLocation = serverInMemory.get(ID-1) +
-			DeviceDatabase.readDatabase().get(ID-1);
+			Server.readDatabase().get(ID-1);
 		return deviceAndLocation;
 	}
 
