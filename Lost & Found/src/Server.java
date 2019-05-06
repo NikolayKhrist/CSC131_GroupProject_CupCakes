@@ -20,12 +20,10 @@ class Server {
             loadDatabaseIntoMemory = new ArrayList<String>();
             updateDatabase();
             instance = new Server();
-            // System.out.println("Server created....");
         }
         else {
             loadDatabaseIntoMemory.clear();
             updateDatabase();
-            // System.out.println("Return existing Server....");
         }
         input.close();
         return instance;

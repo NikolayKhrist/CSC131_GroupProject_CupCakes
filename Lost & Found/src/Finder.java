@@ -112,6 +112,12 @@ public class Finder {
 		}
 	}
 
+	/**
+	 * 
+	 * @param ID
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public static String findDevice(int ID) throws FileNotFoundException {
 		ArrayList<String> serverInMemory = new ArrayList<String>();
 		File file = new File("./server.dat");

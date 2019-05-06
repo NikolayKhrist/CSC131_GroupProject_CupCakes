@@ -31,6 +31,12 @@ public class Main {
         }
     }
 
+    /**
+     * This method prompts the user for what action they want to take
+     * inside the program.
+     * @param scan
+     * @return choice
+     */
     public static int displayMenu(Scanner scan) {
         clearScreen();
         int choice = 0;
@@ -51,6 +57,11 @@ public class Main {
         return choice;
     }
 
+    /**
+     * This method registers a new device and stores it onto the Server
+     * @param scan
+     * @return newRegisteredDevice
+     */
     public static Device registerDevice(Scanner scan) {
         clearScreen();
         Device newRegisteredDevice;
@@ -65,6 +76,13 @@ public class Main {
         return newRegisteredDevice;
     }
 
+    /**
+     * This method hooks into the device database from the server, and the
+     * location / timestamp server and matches the ID of the device to that ID
+     * in the location server.
+     * @param scan
+     * @throws FileNotFoundException
+     */
     public static void showLocation(Scanner scan) 
         throws FileNotFoundException {
         Server.getInstance();
@@ -89,6 +107,10 @@ public class Main {
         promptForward(scan);
     }
 
+    /**
+     * This method shows all the devices currently in users device database
+     * @param scan
+     */
     public static void deviceDump(Scanner scan) {
         Server.getInstance();
         clearScreen();
@@ -129,6 +151,10 @@ public class Main {
         }
     }
 
+    /**
+     * method 
+     * @param scan
+     */
     public static void promptForward(Scanner scan) {
         System.out.print("\n\nPress the ENTER key to continue... ");
         scan.nextLine();

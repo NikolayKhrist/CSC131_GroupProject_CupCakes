@@ -15,6 +15,7 @@ public class Device {
 	private String friendlyName;
 
     public Device(String friendlyName) {
+		// Create Singleton Server instance
 		Server.getInstance();
 
 		try {
@@ -26,9 +27,8 @@ public class Device {
 				.get(Server.readDatabase().size()-1).substring(0,2)
 				.replaceAll("\\s+", "")
 			);
-			// System.out.println("ID COUNTER: " + idCounter);
 		} catch (ArrayIndexOutOfBoundsException e){
-			// System.out.println("ArrayList was empty");
+			// pass
 		}
 		// Create ID that is last recored ID + 1
 		this.ID = ++idCounter;
@@ -36,10 +36,17 @@ public class Device {
 		this.friendlyName = friendlyName;
 	}
 
+	/**
+	 *  
+	 * @return this.ID
+	 */
 	public int getID() {
 		return this.ID;
 	}
 
+	/**
+	 * Print info about Device via System.out
+	 */
 	public String toString() {
 		String toPrint = "Device: ";
 		if (friendlyName != null) {
@@ -52,6 +59,9 @@ public class Device {
 		return toPrint;
 	}
 	
+	/**
+	 * Write device ID and Friendly Name to device datbase.
+	 */
 	public void registerDevice() {
 		try {
 			final Path deviceDB = Paths.get("./deviceDatabase.dat");
