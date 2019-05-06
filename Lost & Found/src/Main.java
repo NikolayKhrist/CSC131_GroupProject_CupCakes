@@ -38,7 +38,7 @@ public class Main {
         System.out.println("2. Find current location of registered device\n");
         System.out.println("3. List registered devices.\n");
         System.out.println("4. Exit program\n");
-        System.out.print("Please Enter 1, 2 or 3: ");
+        System.out.print("Please Enter 1, 2, 3, or 4: ");
 
         try {
             choice = Integer.parseInt(scan.nextLine());
@@ -82,7 +82,8 @@ public class Main {
             System.out.println("Invalid input...");
         }
         
-        delay(5);
+        System.out.print("\n\nPress the ENTER key to continue... ");
+        scan.nextLine();
     }
 
     public static void deviceDump() {
