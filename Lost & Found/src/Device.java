@@ -27,10 +27,8 @@ public class Device {
 				.get(Server.readDatabase().size()-1).substring(0,2)
 				.replaceAll("\\s+", "")
 			);
-			System.out.println("ID COUNTER: " + idCounter);
 		} catch (ArrayIndexOutOfBoundsException e){
-			// e.printStackTrace();
-			System.out.println("ArrayList was empty");
+			e.printStackTrace();
 		}
 		// Create ID that is last recored ID + 1
 		this.ID = ++idCounter;
