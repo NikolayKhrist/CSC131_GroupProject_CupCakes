@@ -10,32 +10,43 @@ public class Main {
         menuChoice = displayMenu(scan);
 
         while (menuChoice != 4) {
-            if (menuChoice == 1) {
-                registerDevice(scan);
-                delay(1);
-                menuChoice = displayMenu(scan);
-            } 
-            else if (menuChoice == 2) {
-                showLocation(scan);
-                menuChoice = displayMenu(scan);
-            }
-
-            else if (menuChoice == 3) {
-                deviceDump();
-                menuChoice = displayMenu(scan);
+            switch (menuChoice) {
+                case 1:
+                    registerDevice(scan);
+                    menuChoice = displayMenu(scan);
+                    break;
+                case 2:
+                    showLocation(scan);
+                    menuChoice = displayMenu(scan);
+                    break;
+                case 3:
+                    deviceDump(scan);
+                    menuChoice = displayMenu(scan);
+                    break;
+                default:
+                    menuChoice = displayMenu(scan);
+                    break;
             }
         }
     }
 
     public static int displayMenu(Scanner scan) {
         clearScreen();
+        int choice = 0;
         System.out.println("\n\nPlease Choose From the Following Options: \n\n");
         System.out.println("1. Register a new device.\n");
         System.out.println("2. Find current location of registered device\n");
         System.out.println("3. List registered devices.\n");
         System.out.println("4. Exit program\n");
-        System.out.print("Please Enter 1, 2 or 3: ");
-        int choice = Integer.parseInt(scan.nextLine());
+        System.out.print("Please Enter 1, 2, 3, or 4: ");
+
+        try {
+            choice = Integer.parseInt(scan.nextLine());
+            
+        } catch (Exception e) {
+            displayMenu(scan);
+        }
+
         return choice;
     }
 
@@ -62,6 +73,10 @@ public class Main {
             System.out.print("Enter your device id: ");
             int ID = Integer.parseInt(scan.nextLine());
             String location = Finder.findDevice(ID);
+            System.out.println("\n\nID     (LATITUDE, LONGITUDE)  " + 
+                "    DATE      TIME         DEVICE NAME ");
+            System.out.println("-----------------------" + 
+                "---------------------------------------------");
             System.out.println(location);
 
         } catch (IndexOutOfBoundsException e) {
@@ -70,16 +85,18 @@ public class Main {
             System.out.println("Invalid input...");
         }
         
-        delay(5);
+        promptForward(scan);
     }
 
-    public static void deviceDump() {
+    public static void deviceDump(Scanner scan) {
         Server.getInstance();
         clearScreen();
+        System.out.println("\nID  DEVICE NAME");
+        System.out.println("------------------");
         for(String device : Server.readDatabase()) {
             System.out.println(device);
         }
-        delay(5);
+        promptForward(scan);
     }
 
     public static void welcomeScreen() {
@@ -96,6 +113,10 @@ public class Main {
         System.out.flush();
     }
 
+    public static void promptForward(Scanner scan) {
+        System.out.print("\n\nPress the ENTER key to continue... ");
+        scan.nextLine();
+    }
 
     /**
      * adds delay to UI ouput for <seconds> seconds
