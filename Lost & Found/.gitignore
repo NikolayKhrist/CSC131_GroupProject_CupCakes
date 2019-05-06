@@ -1,3 +1,4 @@
 bin/
 launch.json
 *.dat
+.DS_Store
