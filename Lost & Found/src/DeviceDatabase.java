@@ -12,7 +12,6 @@ class DeviceDatabase {
     }
 
     public synchronized static DeviceDatabase getInstance() {
-        // Scanner input;
         if(instance == null) {
             loadDatabaseIntoMemory = new ArrayList<String>();
             updateDatabase();
@@ -40,6 +39,7 @@ class DeviceDatabase {
     }
 
     public static ArrayList<String> readDatabase() {
+        updateDatabase();
         return loadDatabaseIntoMemory;
     }
 }

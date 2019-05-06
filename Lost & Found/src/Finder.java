@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -6,8 +8,10 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Scanner;
 
 
 /**
@@ -106,6 +110,20 @@ public class Finder {
 		} catch (final IOException ioe) {
 			ioe.printStackTrace();
 		}
+	}
+
+	public static String findDevice(int ID) throws FileNotFoundException {
+		ArrayList<String> serverInMemory = new ArrayList<String>();
+		File file = new File("./server.dat");
+		Scanner input = new Scanner(file);
+		while (input.hasNextLine()) {
+			serverInMemory.add(input.nextLine());
+		}
+		// System.out.println(DeviceDatabase.readDatabase());
+		// System.out.println(serverInMemory);
+		String deviceAndLocation = serverInMemory.get(ID-1) +
+			DeviceDatabase.readDatabase().get(ID-1);
+		return deviceAndLocation;
 	}
 
 	/**

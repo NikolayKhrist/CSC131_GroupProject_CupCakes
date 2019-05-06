@@ -1,5 +1,7 @@
+import java.io.FileNotFoundException;
+
 public class testing123 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		// testFinderClass();
 		// testFinderGeneratedCoords();
 		testDeviceClass();
@@ -33,10 +35,9 @@ public class testing123 {
 		finder1.sendLocationToServer();
 	}
 
-	public static void testDeviceClass() {
+	public static void testDeviceClass() throws FileNotFoundException {
 		Device roomba = new Device("Roomba");
 		roomba.registerDevice();
-		// System.out.println(roomba);
 
 
 

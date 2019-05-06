@@ -1,9 +1,9 @@
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Scanner scan = new Scanner(System.in);
         int menuChoice;
         welcomeScreen();
@@ -16,7 +16,8 @@ public class Main {
                 menuChoice = displayMenu(scan);
             } 
             else if (menuChoice == 2) {
-
+                showLocation(scan);
+                menuChoice = displayMenu(scan);
             }
         }
     }
@@ -44,6 +45,17 @@ public class Main {
         newRegisteredDevice.registerDevice();
         delay(4);
         return newRegisteredDevice;
+    }
+
+    public static void showLocation(Scanner scan) 
+        throws FileNotFoundException {
+        DeviceDatabase.getInstance();
+        clearScreen();
+        System.out.print("Enter your device id: ");
+        int ID = Integer.parseInt(scan.nextLine());
+        String location = Finder.findDevice(ID);
+        System.out.println(location);
+        delay(5);
     }
 
     public static void welcomeScreen() {

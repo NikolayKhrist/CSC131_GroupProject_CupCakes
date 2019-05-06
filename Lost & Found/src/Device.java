@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -46,6 +47,10 @@ public class Device {
 		return this.ID;
 	}
 
+	// public String lastRecordedLocation(int ID) throws FileNotFoundException {
+	// 	return this.tag.findDevice(ID);
+	// }
+
 
 	public String toString() {
 		String toPrint = "Device: ";
@@ -70,7 +75,7 @@ public class Device {
 			ioe.printStackTrace();
 		}
 		this.tag.sendLocationToServer();
-		System.out.println(DeviceDatabase.readDatabase());
+
 	}
 
 	
