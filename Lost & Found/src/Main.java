@@ -9,7 +9,7 @@ public class Main {
         welcomeScreen();
         menuChoice = displayMenu(scan);
 
-        while (menuChoice != 3) {
+        while (menuChoice != 4) {
             if (menuChoice == 1) {
                 Device newDevice = registerDevice(scan);
                 delay(1);
@@ -17,6 +17,11 @@ public class Main {
             } 
             else if (menuChoice == 2) {
                 showLocation(scan);
+                menuChoice = displayMenu(scan);
+            }
+
+            else if (menuChoice == 3) {
+                deviceDump();
                 menuChoice = displayMenu(scan);
             }
         }
@@ -27,7 +32,8 @@ public class Main {
         System.out.println("\n\nPlease Choose From the Following Options: \n\n");
         System.out.println("1. Register a new device.\n");
         System.out.println("2. Find current location of registered device\n");
-        System.out.println("3. Exit program\n");
+        System.out.println("3. List registered devices.\n");
+        System.out.println("4. Exit program\n");
         System.out.print("Please Enter 1, 2 or 3: ");
         int choice = Integer.parseInt(scan.nextLine());
         return choice;
@@ -58,6 +64,15 @@ public class Main {
         delay(5);
     }
 
+    public static void deviceDump() {
+        DeviceDatabase.getInstance();
+        clearScreen();
+        for(String device : DeviceDatabase.readDatabase()) {
+            System.out.println(device);
+        }
+        delay(5);
+    }
+
     public static void welcomeScreen() {
         clearScreen();
         System.out.println("Welcome to the CSC 131 CupCakes Device Finder!");
@@ -71,6 +86,7 @@ public class Main {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+
 
     /**
      * adds delay to UI ouput for <seconds> seconds

@@ -4,7 +4,8 @@ public class testing123 {
 	public static void main(String[] args) throws FileNotFoundException {
 		// testFinderClass();
 		// testFinderGeneratedCoords();
-		testDeviceClass();
+		// testDeviceClass();
+		clearConsole();
 	}
 
 	/**
@@ -43,5 +44,9 @@ public class testing123 {
 
 
 		// System.out.println(pixel3XL);
+	}
+
+	public static void clearConsole() {
+		System.out.println(System.getProperty("os.name"));
 	}
 }

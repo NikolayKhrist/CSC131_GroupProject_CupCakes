@@ -39,6 +39,7 @@ class DeviceDatabase {
     }
 
     public static ArrayList<String> readDatabase() {
+        loadDatabaseIntoMemory.clear();
         updateDatabase();
         return loadDatabaseIntoMemory;
     }
