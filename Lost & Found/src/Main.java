@@ -94,6 +94,7 @@ public class Main {
         clearScreen();
         System.out.println("\nID  DEVICE NAME");
         System.out.println("------------------");
+        // Iterator design pattern 
         for(String device : Server.readDatabase()) {
             System.out.println(device);
         }
