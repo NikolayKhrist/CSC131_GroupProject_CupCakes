@@ -1,7 +1,11 @@
+import java.io.FileNotFoundException;
+
 public class testing123 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		// testFinderClass();
-		testFinderGeneratedCoords();
+		// testFinderGeneratedCoords();
+		// testDeviceClass();
+		clearConsole();
 	}
 
 	/**
@@ -30,5 +34,19 @@ public class testing123 {
 		Finder finder1 = new Finder(ID_FINDER1);
 		System.out.println(finder1);
 		finder1.sendLocationToServer();
+	}
+
+	public static void testDeviceClass() throws FileNotFoundException {
+		Device roomba = new Device("Roomba");
+		roomba.registerDevice();
+
+
+
+
+		// System.out.println(pixel3XL);
+	}
+
+	public static void clearConsole() {
+		System.out.println(System.getProperty("os.name"));
 	}
 }

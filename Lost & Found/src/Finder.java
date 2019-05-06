@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -6,14 +8,11 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Scanner;
 
-/**
- * TODO: 
- * Create static ID for each instance
- * so each Finder is gauranteed a unique ID
- */
 
 /**
  * 
@@ -101,7 +100,7 @@ public class Finder {
 			// create Path object to file acting as server
 			final Path pathToServer = Paths.get("./server.dat");
 			// Create Files object for writing to file (aka server) <singleton?>
-			Files.write(pathToServer, Arrays.asList(this.getCoordinates() + " "
+			Files.write(pathToServer, Arrays.asList(this.ID + " : " + this.getCoordinates() + " "
 			+ timeStamp()), StandardCharsets.UTF_8, 
 			// If file exists append coordinates and timestamp
 			Files.exists(pathToServer) ? StandardOpenOption.APPEND 
@@ -111,6 +110,21 @@ public class Finder {
 		} catch (final IOException ioe) {
 			ioe.printStackTrace();
 		}
+	}
+
+	public static String findDevice(int ID) throws FileNotFoundException {
+		ArrayList<String> serverInMemory = new ArrayList<String>();
+		File file = new File("./server.dat");
+		Scanner input = new Scanner(file);
+		while (input.hasNextLine()) {
+			serverInMemory.add(input.nextLine());
+		}
+		// System.out.println(Server.readDatabase());
+		// System.out.println(serverInMemory);
+		String deviceAndLocation = serverInMemory.get(ID-1) +
+			Server.readDatabase().get(ID-1);
+		input.close();
+		return deviceAndLocation;
 	}
 
 	/**
