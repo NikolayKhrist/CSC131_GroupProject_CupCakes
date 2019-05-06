@@ -24,18 +24,30 @@ public class Main {
                 deviceDump();
                 menuChoice = displayMenu(scan);
             }
+            else {
+                menuChoice = displayMenu(scan);
+            }
         }
     }
 
     public static int displayMenu(Scanner scan) {
         clearScreen();
+        int choice = 0;
         System.out.println("\n\nPlease Choose From the Following Options: \n\n");
         System.out.println("1. Register a new device.\n");
         System.out.println("2. Find current location of registered device\n");
         System.out.println("3. List registered devices.\n");
         System.out.println("4. Exit program\n");
         System.out.print("Please Enter 1, 2 or 3: ");
-        int choice = Integer.parseInt(scan.nextLine());
+
+        try {
+            choice = Integer.parseInt(scan.nextLine());
+            
+        } catch (Exception e) {
+            System.out.println("Invalid Input");
+            displayMenu(scan);
+        }
+
         return choice;
     }
 
