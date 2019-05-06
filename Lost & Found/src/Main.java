@@ -10,22 +10,22 @@ public class Main {
         menuChoice = displayMenu(scan);
 
         while (menuChoice != 4) {
-            if (menuChoice == 1) {
-                registerDevice(scan);
-                delay(1);
-                menuChoice = displayMenu(scan);
-            } 
-            else if (menuChoice == 2) {
-                showLocation(scan);
-                menuChoice = displayMenu(scan);
-            }
-
-            else if (menuChoice == 3) {
-                deviceDump();
-                menuChoice = displayMenu(scan);
-            }
-            else {
-                menuChoice = displayMenu(scan);
+            switch (menuChoice) {
+                case 1:
+                    registerDevice(scan);
+                    menuChoice = displayMenu(scan);
+                    break;
+                case 2:
+                    showLocation(scan);
+                    menuChoice = displayMenu(scan);
+                    break;
+                case 3:
+                    deviceDump();
+                    menuChoice = displayMenu(scan);
+                    break;
+                default:
+                    menuChoice = displayMenu(scan);
+                    break;
             }
         }
     }
