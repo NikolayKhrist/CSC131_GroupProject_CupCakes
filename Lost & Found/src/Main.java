@@ -38,7 +38,7 @@ public class Main {
      * @return choice
      */
     public static int displayMenu(Scanner scan) {
-        clearScreen();
+        // clearScreen();
         int choice = 0;
         System.out.println("\n\nPlease Choose From the Following Options: \n\n");
         System.out.println("1. Register a new device.\n");
@@ -63,7 +63,7 @@ public class Main {
      * @return newRegisteredDevice
      */
     public static Device registerDevice(Scanner scan) {
-        clearScreen();
+        // clearScreen();
         Device newRegisteredDevice;
         String deviceName;
         System.out.print("\nEnter a name for your device. eg Roomba, iPhone, etc: ");
@@ -86,7 +86,7 @@ public class Main {
     public static void showLocation(Scanner scan) 
         throws FileNotFoundException {
         Server.getInstance();
-        clearScreen();
+        // clearScreen();
 
         try {
             System.out.print("Enter your device id: ");
@@ -113,7 +113,7 @@ public class Main {
      */
     public static void deviceDump(Scanner scan) {
         Server.getInstance();
-        clearScreen();
+        // clearScreen();
         System.out.println("\nID  DEVICE NAME");
         System.out.println("------------------");
         // Iterator design pattern 
@@ -124,7 +124,7 @@ public class Main {
     }
 
     public static void welcomeScreen() {
-        clearScreen();
+        // clearScreen();
         System.out.println("Welcome to the CSC 131 CupCakes Device Finder!");
         delay(1);
     }
