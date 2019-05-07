@@ -152,5 +152,4 @@ public class Finder {
 	private double range(double lower, double upper) {
 		return Math.random() * (upper - lower) + lower;
 	}
-
 }

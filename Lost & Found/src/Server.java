@@ -10,7 +10,6 @@ class Server {
     /**
      * Singleton Server Class
      */
-
     private Server() {
         // private constructor
     }
